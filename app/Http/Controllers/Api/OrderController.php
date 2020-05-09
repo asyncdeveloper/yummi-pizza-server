@@ -46,6 +46,8 @@ class OrderController extends Controller
             $products->push($item->only([ 'id', 'name', 'price' ]));
         }
 
+        $total+=  $total * 0.05; // 5 % of total price is delivery cost;
+
         Order::create([
             'products' => json_encode($products),
             'name' => $data['name'],
